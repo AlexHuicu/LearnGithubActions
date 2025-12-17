@@ -1,5 +1,6 @@
 name: someWF
 on: [push]
+    # branches: [ "master" ]
 
 jobs:
   job1:
@@ -19,4 +20,3 @@ jobs:
       - name: Step Two
         run: "Get-ChildItem Env: | Sort-Object-Name"
 
-        
