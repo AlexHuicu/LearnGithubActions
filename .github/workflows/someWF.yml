@@ -1,17 +1,8 @@
 name: someWF
-on:
-  push:
-    branches:
-      - master
-      - main
-      - develop
-  pull_request:
-    branches:
-      - main
+on: [push]
 
 jobs:
   uJob:
-    name: uJob
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -29,7 +20,6 @@ jobs:
         run: ./main
 
   mJob:
-    name: mJob
     runs-on: macos-latest
     steps:
       - name: Checkout code
@@ -47,7 +37,6 @@ jobs:
         run: ./main
 
   wJob:
-    name: wJob
     runs-on: windows-latest
     steps:
       - name: Checkout code
@@ -64,10 +53,9 @@ jobs:
       - name: Run binary
         run: .\main.exe
 
-  job4:
-    name: allJob
-    needs: [uJob, mJob, wJob]
+  allJob:
     runs-on: ubuntu-latest
+    needs: [uJob, mJob, wJob]
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
